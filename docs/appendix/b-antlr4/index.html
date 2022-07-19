@@ -25,6 +25,7 @@
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../style.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -139,6 +140,8 @@
                 </script>
 
                 <div id="content" class="content">
+                    <!-- Page table of contents -->
+                    <div class="sidetoc"><nav class="pagetoc"></nav></div>
                     <main>
                         <h1 id="附录b-antlr4"><a class="header" href="#附录b-antlr4">附录B ANTLR4</a></h1>
 <p>ANTLR（ANother Tool for Language Recognition）是由Terence Parr博士开发的的语法分析器生成工具，可用于读取、处理、执行和翻译结构化的文件。ANTLR第一版采用C语言开发在1989年发布（第一版名字叫PCCTS），ANTLR2开始改用Java语言实现并在1997年发布第一版本，ANTLR3和ANTLR4分别在2005年和2013年发布，支持Go语言的ANTLR4.6在2016年底发布，从诞生到现在ANTLR已经有30多年的发展历史。目前ANTLR已经成为很多语言、工具和框架软件的基石，本节我们将简单展示如何通过ANTLR4构造一个Go语言版本的计算器。</p>
@@ -286,6 +289,10 @@ func (l *calcListener) ExitAddSub(c *parser.AddSubContext) {
 <h2 id="b5-补充说明"><a class="header" href="#b5-补充说明">B.5 补充说明</a></h2>
 <p>ANTLR4对Go语言支持虽然只有几年时间但是已经足够稳定，比如Google基于Protobuf设计的CEL验证语言的Go语言版本就是基于ANTLR4生成语法解析器。ANTLR4是功能强大的语法解析器生成工具，不仅仅支持基于Listener模式的遍历，还支持通过Visitor模式支持更多定制操作的语法树遍历。此外ANTLR4在社区中配套的辅助工具也非常完善，比如VSCode就有对应的插件以铁路图等不同等方式展示语法文件。更详细的用法请参考Terence Parr博士的《编程语言实现模式》和《ANTLR4权威指南》，它们才是码农真正需要的屠龙刀和倚天剑。</p>
 
+                        <div id="giscus-container"></div>
+                        <footer class="page-footer">
+                            <span>© 2021-2022 | <a href="https://imroc.cc">roc</a> 保留所有权利 | <a href="https://beian.miit.gov.cn/">蜀ICP备2021009081号-1</a></span>
+                        </footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -315,7 +322,13 @@ func (l *calcListener) ExitAddSub(c *parser.AddSubContext) {
         <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+        var pagePath = "appendix/b-antlr4/index.md"
+        </script>
+
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../custom.js"></script>
+        <script type="text/javascript" src="../../bigPicture.js"></script>
     </body>
 </html>

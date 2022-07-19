@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -137,8 +138,15 @@
                 </script>
 
                 <div id="content" class="content">
+                    <!-- Page table of contents -->
+                    <div class="sidetoc"><nav class="pagetoc"></nav></div>
                     <main>
                         <h1 id="go语言定制指南"><a class="header" href="#go语言定制指南">Go语言定制指南</a></h1>
+<ul>
+<li><em>KusonStack一站式可编程配置技术栈: https://github.com/KusionStack/kusion</em></li>
+<li><em>KCL配置编程语言: https://github.com/KusionStack/KCLVM</em></li>
+</ul>
+<hr />
 <p>Go语法树是Go语言源文件的另一种语义等价的表现形式。而Go语言自带的<code>go fmt</code>和<code>go doc</code>等命令都是在Go语法树的基础之上分析工具。因此将Go语言程序作为输入数据，让我们语法树这个维度重新审视Go语言程序，我们将得到创建Go语言本身的技术。Go语法树由标准库的<code>go/ast</code>包定义，它是在<code>go/token</code>包定义的词法基础之上抽象的语法树结构。本书简单介绍语法树相关包的使用。如果想从头实现一个玩具Go语言可以参考<a href="https://github.com/chai2010/ugo-compiler-book">《从头实现µGo语言》</a>。</p>
 <hr />
 <p><img src="cover.jpg" alt="" /></p>
@@ -3288,6 +3296,10 @@ func (l *calcListener) ExitAddSub(c *parser.AddSubContext) {
 <h2 id="b5-补充说明"><a class="header" href="#b5-补充说明">B.5 补充说明</a></h2>
 <p>ANTLR4对Go语言支持虽然只有几年时间但是已经足够稳定，比如Google基于Protobuf设计的CEL验证语言的Go语言版本就是基于ANTLR4生成语法解析器。ANTLR4是功能强大的语法解析器生成工具，不仅仅支持基于Listener模式的遍历，还支持通过Visitor模式支持更多定制操作的语法树遍历。此外ANTLR4在社区中配套的辅助工具也非常完善，比如VSCode就有对应的插件以铁路图等不同等方式展示语法文件。更详细的用法请参考Terence Parr博士的《编程语言实现模式》和《ANTLR4权威指南》，它们才是码农真正需要的屠龙刀和倚天剑。</p>
 
+                        <div id="giscus-container"></div>
+                        <footer class="page-footer">
+                            <span>© 2021-2022 | <a href="https://imroc.cc">roc</a> 保留所有权利 | <a href="https://beian.miit.gov.cn/">蜀ICP备2021009081号-1</a></span>
+                        </footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
@@ -3311,8 +3323,14 @@ func (l *calcListener) ExitAddSub(c *parser.AddSubContext) {
         <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+        var pagePath = "print.md"
+        </script>
+
 
         <!-- Custom JS scripts -->
+        <script type="text/javascript" src="custom.js"></script>
+        <script type="text/javascript" src="bigPicture.js"></script>
         <script type="text/javascript">
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
