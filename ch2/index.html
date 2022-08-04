@@ -153,6 +153,13 @@
                     <!-- Page table of contents -->
                     <div class="sidetoc"><nav class="pagetoc"></nav></div>
                     <main>
+                        <!-- 头部 -->
+                        <ul dir="auto">
+                        <li><em>KusonStack一站式可编程配置技术栈: <a href="https://github.com/KusionStack/kusion">https://github.com/KusionStack/kusion</a></em></li>
+                        <li><em>凹语言™: <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li>
+                        </ul>
+                        <hr>
+
                         <h1 id="第2章-基础面值"><a class="header" href="#第2章-基础面值">第2章 基础面值</a></h1>
 <p>面值是在程序代码中直接表示的值，其它的非零初始值只能由面值常量或常量表达式生成。比如表达式<code>x+2*y</code>的<code>2</code>就是面值，而<code>x</code>和<code>y</code>则不是面值而是标识符。Go语言规范明确定义了基础面值只有整数、浮点数、复数、符文和字符串几种类型。需要特别注意的是布尔类型的true和false并不是普通的面值，而是内置的布尔类型标识符（可能被重新定义为其它变量）。但是从Go语言用户角度看，true和false也是预定义的面值类型，因此普通的标识符也被归在面值一类（在<code>literal_beg</code>和<code>literal_end</code>之间）。</p>
 <h2 id="21-基础面值定义"><a class="header" href="#21-基础面值定义">2.1 基础面值定义</a></h2>

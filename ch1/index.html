@@ -153,6 +153,13 @@
                     <!-- Page table of contents -->
                     <div class="sidetoc"><nav class="pagetoc"></nav></div>
                     <main>
+                        <!-- 头部 -->
+                        <ul dir="auto">
+                        <li><em>KusonStack一站式可编程配置技术栈: <a href="https://github.com/KusionStack/kusion">https://github.com/KusionStack/kusion</a></em></li>
+                        <li><em>凹语言™: <a href="https://github.com/wa-lang/wa">https://github.com/wa-lang/wa</a></em></li>
+                        </ul>
+                        <hr>
+
                         <h1 id="第1章-token"><a class="header" href="#第1章-token">第1章 Token</a></h1>
 <p>Token是编程语言中最小的具有独立含义的词法单元。Token不仅仅包含关键字，还包含用户自定义的标识符、运算符、分隔符和注释等。每个Token对应的词法单元有三个属性是比较重要的：首先是Token本身的值表示词法单元的类型，其次是Token在源代码中源代码文本形式，最后是Token出现的位置。在所有的Token中，注释和分号是两种比较特殊的Token：普通的注释一般不影响程序的语义，因此很多时候可以忽略注释；而Go语言中经常在行尾自动添加分号Token，而分号是分隔语句的词法单元，因此自动添加分号导致了Go语言左花括弧不能单独一行等细微的语法差异。本章学习如何对源代码进行Token分析。</p>
 <h2 id="11-token语法"><a class="header" href="#11-token语法">1.1 Token语法</a></h2>
