@@ -458,7 +458,7 @@ hello.go
 </code></pre>
 <p>行号从1开始，是必须的信息，如果缺少行号则输出“-”表示无效的位置。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="第2章-基础面值"><a class="header" href="#第2章-基础面值">第2章 基础面值</a></h1>
-<p>面值是在程序代码中直接表示的值，其它的非零初始值只能由面值常量或常量表达式生成。比如表达式<code>x+2*y</code>的<code>2</code>就是面值，而<code>x</code>和<code>y</code>则不是面值而是标识符。Go语言规范明确定义了基础面值只有整数、浮点数、复数、符文和字符串几种类型。需要特别注意的是布尔类型的true和false并不是普通的面值，而是内置的布尔类型标识符（可能被重新定义为其它变量）。但是从Go语言用户角度看，true和false也是预定义的面值类型，因此普通的标识符也被归在面值一类（在<code>literal_beg</code>和<code>literal_end</code>之间）。</p>
+<p>面值是在程序代码中直接表示的值，其它的非零初始值只能由面值常量或常量表达式生成。比如表达式<code>x+2*y</code>的<code>2</code>就是面值，而<code>x</code>和<code>y</code>则不是面值而是标识符。Go语言规范明确定义了基础面值只有整数、浮点数、复数、字符和字符串几种类型。需要特别注意的是布尔类型的true和false并不是普通的面值，而是内置的布尔类型标识符（可能被重新定义为其它变量）。但是从Go语言用户角度看，true和false也是预定义的面值类型，因此普通的标识符也被归在面值一类（在<code>literal_beg</code>和<code>literal_end</code>之间）。</p>
 <h2 id="21-基础面值定义"><a class="header" href="#21-基础面值定义">2.1 基础面值定义</a></h2>
 <p>基础面值有整数、浮点数、复数、字符和字符串几种类型，同时标识符也作为面值类型。在<code>go/token</code>包中，基础面值也被定义为独立的Token：</p>
 <p><img src="ch2/../images/ch2-lit-01.png" alt="" /></p>
@@ -722,7 +722,7 @@ func EvalBinaryExpr(exp *ast.BinaryExpr) float64 {
 	return 0
 }
 </code></pre>
-<p>其中Eval函数用于递归解析表达式，如果是二元表达式<code>*ast.BinaryExpr</code>类型则调用EvalBinaryExpr进行解析，如果是<code>*ast.BasicLit</code>面值类型则直接用<code>strconv.ParseFloat</code>解析浮点数面值。EvalBinaryExpr函数用于解析二元表达式，这里为了简单只展示的加法和乘法类型的运算符，然后在加法或乘法的左右子表达式中再调用Eval解析。</p>
+<p>其中Eval函数用于递归解析表达式，如果是二元表达式<code>*ast.BinaryExpr</code>类型则调用EvalBinaryExpr进行解析，如果是<code>*ast.BasicLit</code>面值类型则直接用<code>strconv.ParseFloat</code>解析浮点数面值。EvalBinaryExpr函数用于解析二元表达式，这里为了简单只展示了加法和乘法类型的运算符，然后在加法或乘法的左右子表达式中再调用Eval解析。</p>
 <p>Go语言中，表达式是所有运算的基础。很多功能性的函数也可以作为表达式的一个部分参与运算。如果表达式中再引入变量和函数就变得异常强大了。</p>
 <h2 id="34-标识符为表达式中引入变量"><a class="header" href="#34-标识符为表达式中引入变量">3.4 标识符：为表达式中引入变量</a></h2>
 <p>在前面的例子中，我们已经尝试过数值类型的常量构成的表达式求值。我们现在尝试为表达式引入变量，变量由外部动态注入。</p>
@@ -945,7 +945,7 @@ myNodeVisitor.Visit: main
 <p><img src="ch4/../images/ch4-file-struct-04.png" alt="" /></p>
 <p>首先是包的名字，然后是导入的依赖包列表，最后是类型、常量、变量和函数等声明列表。而文件内部的声明列表是最复杂也是最重要的部分，其更详细的逻辑结构如下图：</p>
 <p><img src="ch4/../images/ch4-file-struct-03.png" alt="" /></p>
-<p>声明部分包含基础声明和函数声明。基础声明包含导入声明、类型声明、常量声明和变量声明，它们可以独立声明，也可以按组方式声明，其中常量和变量的声明采用相同的结构表示。而函数声明不支持按组方式声明，函数声明主要包含接受者、函数参数和返回值组成的函数类型，以及函数的代码实现等信息。</p>
+<p>声明部分包含基础声明和函数声明。基础声明包含导入声明、类型声明、常量声明和变量声明，它们可以独立声明，也可以按组方式声明，其中常量和变量的声明采用相同的结构表示。而函数声明不支持按组方式声明，函数声明主要包含接收者、函数参数和返回值组成的函数类型，以及函数的代码实现等信息。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="第5章-通用声明"><a class="header" href="#第5章-通用声明">第5章 通用声明</a></h1>
 <p>通用声明是不含函数声明的包级别声明：包含导入包、类型、常量和变量四种声明。本章我们将讨论通用声明在语法树中的表示形式。</p>
 <h2 id="51-导入声明"><a class="header" href="#51-导入声明">5.1 导入声明</a></h2>
@@ -1191,7 +1191,7 @@ var Pi = 3.14
 XxxSpec = ...
 </code></pre>
 <p>其中xxx表示声明开头的关键字，基础声明部分的导入声明、类型声明、常量和变量声明都支持按组声明的方式。但是函数的声明是不支持按组的方式的，因此声明部分将函数的声明从基础声明独立出来处理。</p>
-<p>以下是例子定义了一个常量和两个变量，其中常量是独立声明，两个变量是按组声明：</p>
+<p>以下的例子定义了一个常量和两个变量，其中常量是独立声明，两个变量是按组声明：</p>
 <pre><code class="language-go">const Pi = 3.14
 
 var (
@@ -1201,7 +1201,7 @@ var (
 </code></pre>
 <p>以上代码对应语法树的逻辑结构如图所示：</p>
 <p><img src="ch5/../images/ch5-decl-group-01.png" alt="" /></p>
-<p>因为第一个出现的是<code>const</code>关键字，因此<code>*ast.File.Decls</code>的第一个元素是表示常量的<code>*ast.GenDecl</code>类型，其中Specs列表只有一个元素对应Pi常量。第二个出现是<code>var</code>关键字，因此<code>*ast.File.Decls</code>的第二个元素是表示变量的<code>*ast.GenDecl</code>类型，其中Specs列表有两个元素分别对应a和b两个变量，Specs列表的长度对应组声明中元素的个数。</p>
+<p>因为第一个出现的是<code>const</code>关键字，因此<code>*ast.File.Decls</code>的第一个元素是表示常量的<code>*ast.GenDecl</code>类型，其中Specs列表只有一个元素对应Pi常量。第二个出现的是<code>var</code>关键字，因此<code>*ast.File.Decls</code>的第二个元素是表示变量的<code>*ast.GenDecl</code>类型，其中Specs列表有两个元素分别对应a和b两个变量，Specs列表的长度对应组声明中元素的个数。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="第6章-函数声明"><a class="header" href="#第6章-函数声明">第6章 函数声明</a></h1>
 <p>函数是所有编程语言中的核心，因为只有函数的语句才有了计算的功能。Go语言的函数也是一种值数据，可以定义包级别的函数，也可以为自定义的类型定义方法，同时还可以在局部作用域内定义闭包函数。本节将讨论函数的数据类型。</p>
 <h2 id="61-函数的语法"><a class="header" href="#61-函数的语法">6.1 函数的语法</a></h2>
@@ -1249,7 +1249,7 @@ ParameterDecl  = [ IdentifierList ] [ &quot;...&quot; ] Type .
 </code></pre>
 <p>其中Params和Results分别表示输入参数和返回值列表，它们和函数的接收者参数列表是相同的类型。因此该方法的定义可以用下图表示：</p>
 <p><img src="ch6/../images/ch6-func-decl-01.png" alt="" /></p>
-<p>对于没有接受者的包函数，<code>ast.FuncDecl.Recv</code>部分为nil。而对于方法函数，即使定义多个接收者参数依然是可以正确解析的。因此合法的语法树不一定完全满足Go语言的规范，一般在语法树构建完成之后还需要专门进行语义分析。</p>
+<p>对于没有接收者的包函数，<code>ast.FuncDecl.Recv</code>部分为nil。而对于方法函数，即使定义多个接收者参数依然是可以正确解析的。因此合法的语法树不一定完全满足Go语言的规范，一般在语法树构建完成之后还需要专门进行语义分析。</p>
 <h2 id="63-参数分组"><a class="header" href="#63-参数分组">6.3 参数分组</a></h2>
 <p>接收者、输入和返回值参数均由<code>ast.FieldList</code>定义，该结构体定义如下：</p>
 <pre><code class="language-go">type FieldList struct {
@@ -1310,7 +1310,7 @@ TypeDef   = identifier Type .
 
 Type      = identifier | PackageName &quot;.&quot; identifier .
 </code></pre>
-<p>Type表示已有的命名类型，可以是当前包的类型，也是可以其它包的类型。下面是这些类型的例子：</p>
+<p>Type表示已有的命名类型，可以是当前包的类型，也可以是其它包的类型。下面是这些类型的例子：</p>
 <pre><code class="language-go">type Int1 int
 type Int2 pkg.Int
 </code></pre>
@@ -1791,7 +1791,7 @@ type StructType struct {
 <h2 id="711-组合类型"><a class="header" href="#711-组合类型">7.11 组合类型</a></h2>
 <p>复合类型最强大的地方在于通过不同组合生成更复杂的类型。但是第一步需要搞清楚基于基础类型构造的复合类型，然后才是复合类型之间的组合。在掌握了基础类型和复合类型的语法树结构之后，我们就可以解析任意复杂的类型，同时也就很容易理解Go语言中反射的类型结构。不管是数据结构还是函数都需要和类型关联，因此理解类型之后就把握了整个程序的脉络，剩下的就是向函数体中填充语句而已。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="第8章-复合面值"><a class="header" href="#第8章-复合面值">第8章 复合面值</a></h1>
-<p>在基础面值章节，我们已经见过整数、浮点数、复数、符文和字符串等一些简单的面值。除了基础面值之外，还有结构体面值、map面值和函数面值等。本节讨论复合面值的语法树表示。</p>
+<p>在基础面值章节，我们已经见过整数、浮点数、复数、字符和字符串等一些简单的面值。除了基础面值之外，还有结构体面值、map面值和函数面值等。本节讨论复合面值的语法树表示。</p>
 <h2 id="81-面值的语法"><a class="header" href="#81-面值的语法">8.1 面值的语法</a></h2>
 <p>在Go语言规范文档中，完整的面值语法由Literal定义，具体如下：</p>
 <pre><code>Literal       = BasicLit | CompositeLit | FunctionLit .
@@ -2314,7 +2314,7 @@ type BlockStmt struct {
 12  .  Rbrace: 39
 13  }
 </code></pre>
-<p>其中List部分有两个新定义的语句块，每个语句块依然是ast.BlockStmt类型。函数体中的语句块构成的语法树和类型中的语法树结构是很相似的，但是语句的语法树最大的特定是可以循环递归定义，而类型的语法树不能递归定义自身（语义层面禁止）。</p>
+<p>其中List部分有两个新定义的语句块，每个语句块依然是ast.BlockStmt类型。函数体中的语句块构成的语法树和类型中的语法树结构是很相似的，但是语句的语法树最大的特点是可以循环递归定义，而类型的语法树不能递归定义自身（语义层面禁止）。</p>
 <h2 id="103-表达式语句"><a class="header" href="#103-表达式语句">10.3 表达式语句</a></h2>
 <p>实际上定义空的语句块并不能算真正的语句，它只是在编译阶段定义新的变量作用域，并没有产生新的语句或计算。最简单的语句是表达式语句，不管是简单表达式还是复杂的表达式都可以作为一个独立的语句。表达式语句语法规范如下：</p>
 <pre><code>ExpressionStmt = Expression .
@@ -2391,7 +2391,7 @@ ExpressionList = Expression { &quot;,&quot; Expression } .
 <pre><code>Declaration  = ConstDecl | TypeDecl | VarDecl .
 TopLevelDecl = Declaration | FunctionDecl | MethodDecl .
 </code></pre>
-<p>其中Declaration就是函数体内部的声明语法，可以在函数内部声明常量、变量和类型，但是不能声明函数和方法。关于TopLevelDecl定义顶级常量、变量和类型声明我们已经讨论过，其中已经包含了函数内部的声明语法。我们这里以一个简单的例子展示如果在语句块中保存声明语句：</p>
+<p>其中Declaration就是函数体内部的声明语法，可以在函数内部声明常量、变量和类型，但是不能声明函数和方法。关于TopLevelDecl定义顶级常量、变量和类型声明我们已经讨论过，其中已经包含了函数内部的声明语法。我们这里以一个简单的例子展示如何在语句块中保存声明语句：</p>
 <pre><code class="language-go">func main() {
 	var a int
 }
@@ -2557,7 +2557,7 @@ for true {}
 for i := 0; true; i++ {}
 for i, v := range m {}
 </code></pre>
-<p>其中第一个没有循环条件，默认条件是true，因此和第二个循环语句一样都是死循环。而第一和第二个循环语句其实是第三个经典循环结构的特例，在第三个循环语句中增加的初始化语句和循环迭代语句。最后第四个循环语句是一种新的循环结构，终于用于数组、切片和map的迭代。以上四个循环语句可以再次归纳为以下两种：</p>
+<p>其中第一个没有循环条件，默认条件是true，因此和第二个循环语句一样都是死循环。而第一和第二个循环语句其实是第三个经典循环结构的特例，在第三个循环语句中增加了初始化语句和循环迭代语句。最后第四个循环语句是一种新的循环结构，主要用于数组、切片和map的迭代。以上四个循环语句可以再次归纳为以下两种：</p>
 <pre><code class="language-go">for x; y; z {}
 for x, y := range z {}
 </code></pre>
@@ -2613,7 +2613,7 @@ for x, y := range z {}
 	for range ch {}
 }
 </code></pre>
-<p>我们省略来循环中的Key和Value部分。其语法树如下：</p>
+<p>我们省略了循环中的Key和Value部分。其语法树如下：</p>
 <pre><code> 0  *ast.BlockStmt {
  1  .  Lbrace: 29
  2  .  List: []ast.Stmt (len = 1) {

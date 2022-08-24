@@ -208,7 +208,7 @@ ParameterDecl  = [ IdentifierList ] [ &quot;...&quot; ] Type .
 </code></pre>
 <p>其中Params和Results分别表示输入参数和返回值列表，它们和函数的接收者参数列表是相同的类型。因此该方法的定义可以用下图表示：</p>
 <p><img src="../images/ch6-func-decl-01.png" alt="" /></p>
-<p>对于没有接受者的包函数，<code>ast.FuncDecl.Recv</code>部分为nil。而对于方法函数，即使定义多个接收者参数依然是可以正确解析的。因此合法的语法树不一定完全满足Go语言的规范，一般在语法树构建完成之后还需要专门进行语义分析。</p>
+<p>对于没有接收者的包函数，<code>ast.FuncDecl.Recv</code>部分为nil。而对于方法函数，即使定义多个接收者参数依然是可以正确解析的。因此合法的语法树不一定完全满足Go语言的规范，一般在语法树构建完成之后还需要专门进行语义分析。</p>
 <h2 id="63-参数分组"><a class="header" href="#63-参数分组">6.3 参数分组</a></h2>
 <p>接收者、输入和返回值参数均由<code>ast.FieldList</code>定义，该结构体定义如下：</p>
 <pre><code class="language-go">type FieldList struct {

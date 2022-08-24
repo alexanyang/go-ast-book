@@ -406,7 +406,7 @@ var Pi = 3.14
 XxxSpec = ...
 </code></pre>
 <p>其中xxx表示声明开头的关键字，基础声明部分的导入声明、类型声明、常量和变量声明都支持按组声明的方式。但是函数的声明是不支持按组的方式的，因此声明部分将函数的声明从基础声明独立出来处理。</p>
-<p>以下是例子定义了一个常量和两个变量，其中常量是独立声明，两个变量是按组声明：</p>
+<p>以下的例子定义了一个常量和两个变量，其中常量是独立声明，两个变量是按组声明：</p>
 <pre><code class="language-go">const Pi = 3.14
 
 var (
@@ -416,7 +416,7 @@ var (
 </code></pre>
 <p>以上代码对应语法树的逻辑结构如图所示：</p>
 <p><img src="../images/ch5-decl-group-01.png" alt="" /></p>
-<p>因为第一个出现的是<code>const</code>关键字，因此<code>*ast.File.Decls</code>的第一个元素是表示常量的<code>*ast.GenDecl</code>类型，其中Specs列表只有一个元素对应Pi常量。第二个出现是<code>var</code>关键字，因此<code>*ast.File.Decls</code>的第二个元素是表示变量的<code>*ast.GenDecl</code>类型，其中Specs列表有两个元素分别对应a和b两个变量，Specs列表的长度对应组声明中元素的个数。</p>
+<p>因为第一个出现的是<code>const</code>关键字，因此<code>*ast.File.Decls</code>的第一个元素是表示常量的<code>*ast.GenDecl</code>类型，其中Specs列表只有一个元素对应Pi常量。第二个出现的是<code>var</code>关键字，因此<code>*ast.File.Decls</code>的第二个元素是表示变量的<code>*ast.GenDecl</code>类型，其中Specs列表有两个元素分别对应a和b两个变量，Specs列表的长度对应组声明中元素的个数。</p>
 
                         <div id="giscus-container"></div>
                         <footer class="page-footer">
